@@ -1,18 +1,23 @@
-import { View, Image, StyleSheet, Text } from "react-native";
+import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { elevation } from "../common/styles";
+import { withNavigation } from "react-navigation";
 
-const RestaurantItem = ({ restaurant }) => {
+const RestaurantItem = ({ restaurant, navigation }) => {
   return (
-    <View style={[styles, elevation, styles.container]}>
-      <Image style={styles.image} source={{ uri: restaurant.imgUrl }} />
-      <View style={styles.infoContainer}>
-        <Text style={styles.header}>{restaurant.name}</Text>
-        <View style={styles.info}>
-          <Text style={styles.rating}>5 stars</Text>
-          <Text style={styles.price}>$$$</Text>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Restaurant", { id: restaurant.id })}
+    >
+      <View style={[styles, elevation, styles.container]}>
+        <Image style={styles.image} source={{ uri: restaurant.imgUrl }} />
+        <View style={styles.infoContainer}>
+          <Text style={styles.header}>{restaurant.name}</Text>
+          <View style={styles.info}>
+            <Text style={styles.rating}>5 stars</Text>
+            <Text style={styles.price}>$$$</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -53,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RestaurantItem;
+export default withNavigation(RestaurantItem);
