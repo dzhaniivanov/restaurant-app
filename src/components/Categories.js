@@ -1,9 +1,10 @@
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import CategoryItem from "./CategoryItem";
 
 const Categories = ({setTerm,categories,term}) => {
   return (
-    <FlatList
+    <View>
+      <FlatList
         data={categories}
         renderItem={({ item, index }) => {
           return (
@@ -20,6 +21,7 @@ const Categories = ({setTerm,categories,term}) => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(category) => category.name}
       />
+    </View>
   );
 };
 

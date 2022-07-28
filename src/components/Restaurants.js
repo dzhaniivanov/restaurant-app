@@ -1,15 +1,15 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import * as data from "../common/restaurants.json";
+import RestaurantItem from "./RestaurantItem";
 
 const Restaurants = () => {
-  console.log(data);
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Top Restaurants</Text>
       <FlatList
         data={data.restaurants}
         keyExtractor={(restaurant) => restaurant.id}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
+        renderItem={({ item }) => <RestaurantItem restaurant={item}/>}
       />
     </View>
   );
